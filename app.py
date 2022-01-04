@@ -22,6 +22,11 @@ countries = [
 async def get_countries():
     return countries
 
+@app.get("/countries/{id}")
+async def get_country(id):
+    id = int(id)-1
+    return countries[id]
+
 @app.post("/countries", status_code=201)
 async def add_country(country: Country):
     countries.append(country)
